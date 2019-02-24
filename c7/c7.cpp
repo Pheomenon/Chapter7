@@ -3,42 +3,44 @@
 
 #include <iostream>
 using namespace std;
-int  Fill_array(double* array, int i);
-void Show_array(double* array, int i);
-void Reverse_array(double* array, int i);
+int*  Fill_array(double* array, int*last);
+void Show_array(double* array, int* last);
+void Reverse_array(double* array, int* last);
 
 const int elem = 10;
 int main()
 {
 	double array[elem]; int i = 0;
-	i = Fill_array(array, i);
-	Show_array(array, i);
-	Reverse_array(array, i);
-	Show_array(array, i);
-
+	int* psi = &i;
+	int* ps = Fill_array(array,psi);
+	Show_array(array, ps);
+	Reverse_array(array, ps);
+	double *psa = array;
+	Show_array(array, ps);
 }
 
-int Fill_array(double* array, int i) {
-	while (i<elem && cin >> array[i])
+int* Fill_array(double* array, int* last) {
+	while (*last<elem && cin >> array[*last])
 	{
-		i++;
+		(*last)++;
 	}
-	return i;
+	return last;
 }
-void Show_array(double* array, int i) {
-	for (int k = 0; k < i; k++) {
+void Show_array(double* array, int* last) {
+	for (int k = 0; k < *last; k++) {
 		cout << array[k] << ',';
 	}
 	cout << endl;
 }
 
-void Reverse_array(double* array, int i) {
+void Reverse_array(double* array, int* last) {
 	double temp;
-	i -= 1;
-	for (int k = 0; k <= i; k++, i--) {
+	int psl = *last;
+	(psl) -= 1;
+	for (int k = 0; k <= psl; k++, (psl)--) {
 		temp = array[k];
-		array[k] = array[i];
-		array[i] = temp;
+		array[k] = array[psl];
+		array[psl] = temp;
 	}
 }
 
