@@ -26,7 +26,7 @@ int* Fill_array(double* array, int* last) {
 	}
 	return last;
 }
-void Show_array(double* array, int* last) {
+void Show_array(double* const array,  int* const last) {
 	for (int k = 0; k < *last; k++) {
 		cout << array[k] << ',';
 	}
