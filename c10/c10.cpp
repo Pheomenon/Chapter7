@@ -1,28 +1,36 @@
-﻿// c5.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
+﻿// c10.cpp : 此文件包含 "main" 函数。程序执行将在此处开始并结束。
 //
 
 #include <iostream>
 using namespace std;
-long factorial(int factor);
+
+double calculate(double, double,double(*pf)(double,double));
+double calculate(int, int(*pf)(int));
+int factorial(int x);
+double add(double x, double y);
+
 int main()
 {
-    M: cout << "Enter an number: "; 
-	int factor;
-	cin >> factor;
-	if (factor > 0) {
-		long result = factorial(factor);
-		cout << factor << " != " << result << endl;
-	}
-	else if (factor == 0) {
-		cout << "0! = 1" << endl;
-	}
-	else goto M;
+	double q = calculate(2.5, 10.4, add);
+	int p = calculate(5, factorial);
 }
 
-long factorial(int factor) {
-	if(factor>1)
-	factor *= factorial(factor - 1);
-	return factor;
+
+double calculate(double x, double y, double(*pf)(double,double)) {
+	cout << (*pf)(x, y) << endl;;
+	return 0;
+}
+double add(double x, double y) {
+	return x + y;
+}
+double calculate(int x, int(*pf)(int)) {
+	cout << "Factor: "<<(*pf)(x);
+	return 1;
+}
+int factorial(int x) {
+	if (x > 1)
+		x *= factorial(x - 1);
+	return x;
 }
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单

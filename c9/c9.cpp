@@ -55,21 +55,21 @@ int getinfo(student *pa, int n){
 	return actual;
 }
 void display1(student st) {
-	cout <<" Display1:" <<endl;
+	cout <<"Display1:" <<endl;
 	cout <<"Full name: "<< st.fullname<<endl;
 	cout <<"Hobby: "<<st.hobby<<endl;
 	cout <<"OOPlevel: "<< st.ooplevel;
 	cout << endl;
 }
 void display2(const student* ps) {
-	cout << " Display2:"<<endl;
+	cout << "Display2:"<<endl;
 	cout << "Full name: " << ps->fullname<<endl;
 	cout << "Hobby: " << ps->hobby<<endl;
 	cout << "OOPlevel: " << ps->ooplevel<<endl;
 	cout << endl;
 }
 void display3(const student pa[], int n) {
-	cout << " Display3:"<<endl;
+	cout << "Display3:"<<endl;
 	for (int i = 0; i < n; i++) {
 		cout << "Full name: " << pa[i].fullname << endl;
 		cout << "Hobby: " << pa[i].hobby << endl;
