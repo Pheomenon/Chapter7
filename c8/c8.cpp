@@ -12,9 +12,9 @@ struct expenses
 	double cost;
 };
 void Ver_AFill(double* cost);
-void Ver_AShow(double* cost);
+void Ver_AShow(const double* cost);
 void Ver_BFill(expenses* exp);
-void Ver_BShow(expenses* exp);
+void Ver_BShow(const expenses* exp);
 
 int main()
 {
@@ -33,7 +33,7 @@ void Ver_AFill(double *cost) {
 		cin >> (cost[i]);
 	}
 }
-void Ver_AShow(double* cost) {
+void Ver_AShow(const double* cost) {
 	double total = 0.0;
 	for (int i = 0; i < Seasons; i++) {
 		cout << Snames[i] << ": $" << cost[i] << endl;
@@ -49,7 +49,7 @@ void Ver_BFill(expenses *exp) {
 		cin >> exp[i].cost;
 	}
 }
-void Ver_BShow(expenses* exp) {
+void Ver_BShow(const expenses* exp) {
 	double total = 0.0;
 	for (int i = 0; i < Seasons; i++) {
 		cout << Snames[i] << ": $" << exp[i].cost << endl;
