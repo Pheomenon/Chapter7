@@ -7,13 +7,76 @@ const int SLEN = 30;
 struct student
 {
 	char fullname[SLEN];
-	char hobby[]
+	char hobby[SLEN];
+	int ooplevel;
 };
+
+
+int getinfo(student *pa, int n);
+void display1(student st);
+void display2(const student* ps);
+void display3(const student pa[], int n);
+
 int main()
 {
-    
+	cout << "Enter class size: ";
+	int class_size;
+	cin >> class_size;
+	while (cin.get() != '\n')
+		continue;
+	student* ptr_stu = new student[class_size];
+	int entered = getinfo(ptr_stu, class_size);
+	for (int i = 0; i < entered; i++) {
+		display1(ptr_stu[i]);
+		display2(&ptr_stu[i]);
+	}
+	display3(ptr_stu, entered);
+	delete[] ptr_stu;
+	cout << "Done\n";
+	return 0;
 }
-
+int getinfo(student *pa, int n){
+	int actual = 0;
+	for (int i = 0; i < n; i++) {
+		cout << "Enter the student's full name: ";
+		cin >> pa[i].fullname;
+		if (*pa[i].fullname == '\n') {
+			break;
+		}
+		else{
+			actual++;
+		}
+		cout << "Enter his hobby: ";
+		cin >> pa[i].hobby;
+		cout << "Enter his OOP level: ";
+		cin >> pa[i].ooplevel;
+		
+	}
+	return actual;
+}
+void display1(student st) {
+	cout <<" Display1:" <<endl;
+	cout <<"Full name: "<< st.fullname<<endl;
+	cout <<"Hobby: "<<st.hobby<<endl;
+	cout <<"OOPlevel: "<< st.ooplevel;
+	cout << endl;
+}
+void display2(const student* ps) {
+	cout << " Display2:"<<endl;
+	cout << "Full name: " << ps->fullname<<endl;
+	cout << "Hobby: " << ps->hobby<<endl;
+	cout << "OOPlevel: " << ps->ooplevel<<endl;
+	cout << endl;
+}
+void display3(const student pa[], int n) {
+	cout << " Display3:"<<endl;
+	for (int i = 0; i < n; i++) {
+		cout << "Full name: " << pa[i].fullname << endl;
+		cout << "Hobby: " << pa[i].hobby << endl;
+		cout << "OOPlevel: " << pa[i].ooplevel << endl;
+	}
+	cout << endl;
+}
 // 运行程序: Ctrl + F5 或调试 >“开始执行(不调试)”菜单
 // 调试程序: F5 或调试 >“开始调试”菜单
 
